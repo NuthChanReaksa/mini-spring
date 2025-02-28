@@ -21,3 +21,4 @@ VOLUME /keys
 VOLUME /fabric-logs
 # Now you can reference a fixed name in the ENTRYPOINT
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
+git
