@@ -1,0 +1,46 @@
+server:
+  port: 8888
+
+# File storage configuration
+file:
+  storage-dir: "filestorage/images/"
+  client-dir: "/images/**"
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres  # Ensure this is correct
+    username: postgres
+    password: 1234567890
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update  # Change to 'create-drop' for debugging if needed
+    properties:
+      hibernate:
+        default_schema: public  # Ensures tables are created in the correct schema
+    generate-ddl: true
+
+springdoc:
+  swagger-ui:
+    path: /
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.orm.jpa: DEBUG
+    org.hibernate.SQL: DEBUG  # Log SQL statements
+    org.hibernate.type: TRACE  # Log bound parameters
+    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: TRACE  # Extra debugging
+
+# Token paths
+ACCESS_TOKEN_PRIVATE_KEY_PATH: access-refresh-token-keys/access-token-private.key
+ACCESS_TOKEN_PUBLIC_KEY_PATH: access-refresh-token-keys/access-token-public.key
+REFRESH_TOKEN_PRIVATE_KEY_PATH: access-refresh-token-keys/refresh-token-private.key
+REFRESH_TOKEN_PUBLIC_KEY_PATH: access-refresh-token-keys/refresh-token-public.key
